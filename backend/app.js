@@ -3,13 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var app = express();
+
+// Config
+const config = require('./config');
+app.set('api_secret_key',config.api_secret_key);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user.routes');
 var moviesRouter = require('./routes/movie.routes');
 var directorsRouter = require("./routes/director.routes");
 
-var app = express();
+// Token Middleware
+const verifyToken = require("./middlewares/verifyToken")
 
 const db = require("./helpers/db")()
 
@@ -25,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api',verifyToken); // this will apply to anything comes with "/api"
 app.use('/api/movies', moviesRouter);
 app.use('/api/directors', directorsRouter);
 
