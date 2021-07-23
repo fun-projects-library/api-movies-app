@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react';
 function MovieList({movies}) {
     const movieList =(
         <Grid>
-        <Grid.Row columns={4}>
+        <Grid.Row columns={3}>
           {movies.map((movie)=>(
             <Grid.Column key={movie.id}>
             <MovieCard movie={movie}/>

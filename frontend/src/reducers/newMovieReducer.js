@@ -5,20 +5,21 @@ import {
 } from "../actions/newMovieActions";
 // Create with rxreducer snippet
 const initialState = {
-  fecthing: false,
+  fetching: false,
   fetched: false,
   movies: [],
   error: {},
+  redirect:false
 };
 
 const newMovieReducer =  (state = initialState, { type, payload }) => {
   switch (type) {
     case NEW_MOVIES_PENDING:
-      return { ...state, fecthing: true, fetched: false };
+      return { ...state, fetching: true, fetched: false };
     case NEW_MOVIES_FULFILLED:
-      return { ...state, fecthing: false, fetched: true, movies: payload };
+      return { ...state, fetching: false, fetched: true, movies: payload };
     case NEW_MOVIES_REJECTED:
-      return { ...state, fecthing: false, fetched: true, error: payload };
+      return { ...state, fetching: false, fetched: true, error: payload };
     default:
       return state;
   }

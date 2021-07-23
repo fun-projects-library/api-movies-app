@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import MovieList from "../MovieList";
 import { fetchMovies } from '../../actions/movieActions';
 import ScaleLoader from "react-spinners/ScaleLoader";
-import moviesReducer from '../../reducers/moviesReducer';
+//import moviesReducer from '../../reducers/moviesReducer';
 
 
 export class MoviesPage extends Component {
