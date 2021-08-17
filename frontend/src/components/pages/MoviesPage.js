@@ -17,10 +17,10 @@ export class MoviesPage extends Component {
     
     render() {
         const errMessage = this.props.moviesReducer.error.message
-        console.log(this.props)
+        console.log(this.props.moviesReducer.fetching)
         return (
             <div>
-                <ScaleLoader loading={true/*this.props.moviesReducer.fetching*/} color={"#36D7B7"}/>
+                <ScaleLoader loading={this.props.moviesReducer.fetching} color={"#36D7B7"}/>
                 
                 <h1>Movie Page</h1>
                 {errMessage ? errMessage : <MovieList movies={this.props.moviesReducer.movies}/>}
